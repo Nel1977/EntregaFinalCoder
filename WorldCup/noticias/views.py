@@ -12,3 +12,8 @@ class NoticiaList(ListView):
     template_name = 'noticias.html'
     context_object_name = 'noticias'
     paginate_by = 3
+
+class NoticiaDetail(DetailView):
+    model = Noticia
+    template_name = 'noticia.html'
+    context_object_name = 'noticia'

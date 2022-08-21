@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    {{noticia.titulo}}
+{% endblock title %}
+
+{% block contenido %}
+
+    <section class="py-5">
+        <div class="container px-5 my-5">
+            <div class="row gx-5">
+                <div class="col-lg-3">
+                    <div class="d-flex align-items-center mt-lg-5 mb-4">
+                        <img class="img-fluid rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
+                        <div class="ms-3">
+                            <div class="fw-bold">{{noticia.autor}}</div>
+                            <div class="text-muted">News, Business</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <h1 class="fw-bolder mb-1">{{noticia.titulo}}</h1>
+                            <!-- Post meta content-->
+                            <div class="text-muted fst-italic mb-2">{{noticia.publicada}}</div>
+                        </header>
+                        <!-- Preview image figure-->
+                        <figure class="mb-4"><img class="img-fluid rounded" src="{{noticia.imagen.url}}" alt="..." /></figure>
+                        <!-- Post content-->
+                        <section class="mb-5">
+                            <h3 class="fw-bolder mb-4 mt-5">{{noticia.subtitulo}}</h3>
+                            {{noticia.contenido}}
+                        </section>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+{% endblock contenido %}
