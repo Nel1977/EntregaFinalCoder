@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Noticias
+{% endblock title %}
+
+{% block contenido %}
+
+<!-- Noticias section-->
+<section class="py-5">
+    <div class="container px-5 my-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-8 col-xl-6">
+                <div class="text-center">
+                    <h2 class="fw-bolder">Noticias Qatar 2022</h2>
+                    <p class="lead fw-normal text-muted mb-5">¡Mantenete informado de todo lo que pasa en la copa del mundo!</p>
+                </div>
+            </div>
+        </div>
+        <div class="row gx-5">
+            {% if noticias %}
+                {% for noticia in noticias %}
+                    <div class="col-lg-4 mb-5">
+                        <div class="card h-100 shadow border-0">
+                            <img class="card-img-top" src="{{noticia.imagen.url}}" alt="..." />
+                            <div class="card-body p-4">
+                                <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">{{noticia.titulo}}</h5></a>
+                                <p class="card-text mb-0">{{noticia.subtitulo}}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-lg-8 col-xl-6">
+                    <div class="alert alert-primary" role="alert">
+                        No hay noticias en este momento!
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Menú de paginación -->
+        {% if is_paginated %}
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item ">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">&laquo;</a>
+                    </li>
+                    {% endif %}
+                    {% for i in paginator.page_range %}
+                    <li class="page-item {% if page_obj.number == i %}active{% endif %}">
+                        <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                    </li>
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                    <li class="page-item ">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">&raquo;</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
+
+        <!-- Call to action-->
+        <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
+            <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
+                <div class="mb-4 mb-xl-0">
+                    <div class="fs-3 fw-bold text-white">New products, delivered to you.</div>
+                    <div class="text-white-50">Sign up for our newsletter for the latest updates.</div>
+                </div>
+                <div class="ms-xl-4">
+                    <div class="input-group mb-2">
+                        <input class="form-control" type="text" placeholder="Email address..." aria-label="Email address..." aria-describedby="button-newsletter" />
+                        <button class="btn btn-outline-light" id="button-newsletter" type="button">Sign up</button>
+                    </div>
+                    <div class="small text-white-50">We care about privacy, and will never share your data.</div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</section>
+
+{% endblock contenido %}
