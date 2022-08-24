@@ -8,6 +8,8 @@
 
 {% block contenido %}
 
+{% include 'includes/menu-admin.html' %}
+
     <section class="py-5">
         <div class="container px-5 my-5">
             <div class="row gx-5">
@@ -28,23 +30,19 @@
                             <!-- Post title-->
                             <h1 class="fw-bolder mb-1">{{noticia.titulo}}</h1>
                             <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">{{noticia.publicada}}</div>
+                            <div class="text-muted fst-italic mb-2">{{noticia.fecha}}</div>
                         </header>
                         <!-- Preview image figure-->
                         <figure class="mb-4"><img class="img-fluid rounded" src="{{noticia.imagen.url}}" alt="..." /></figure>
                         <!-- Post content-->
                         <section class="mb-5">
                             <h3 class="fw-bolder mb-4 mt-5">{{noticia.subtitulo}}</h3>
-                            {{noticia.contenido}}
+                            {{noticia.contenido|safe}}
                         </section>
                     </article>
                 </div>
             </div>
         </div>
     </section>
-
-
-
-
 
 {% endblock contenido %}
