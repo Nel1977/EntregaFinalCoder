@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Eliminar Noticia
+{% endblock title %}
+
+{% block contenido %}
+
+{% include 'includes/menu-admin.html' %}
+
+<header class="py-5">
+    <div class="container px-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xxl-6">
+                <div class="text-center my-5">
+                    <h3 class="fw-bolder mb-3">¿Está seguro que desea eliminar la noticia?</h3>
+                    <p class="text-danger">¡Esta acción no podrá deshacerse!</p>
+                    <form method="POST">{% csrf_token %}
+                        <input class="btn btn-danger btn-lg" type="submit" value="Eliminar">
+                    </form>
+                    <br>
+                    <a href="{% url 'ListaNoticias' %}">Volver atrás</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="py-5 bg-light" id="scroll-target">
+    <div class="container px-5 my-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-3"><img class="img-fluid rounded mb-5 mb-lg-0" src="{{noticia.imagen.url}}" alt="" /></div>
+            <div class="col-lg-3">
+                <h4 class="fw-bolder">{{noticia.titulo}}</h4>
+                <p class="lead fw-normal text-muted mb-0">{{noticia.subtitulo}}</p>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </div>
+</section>
+
+{% endblock contenido %}
