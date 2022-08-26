@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.models import Q
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from noticias.models import Noticia
@@ -35,5 +36,22 @@ class NoticiaDelete(DeleteView):
     model = Noticia
     template_name = 'eliminar-noticia.html'
     success_url = '/lista-noticias/'
+
+def buscar_noticia(request):
+    busqueda = request.GET.get("buscar")
+    noticias = Noticia.objects.all()
+
+    if busqueda:
+        noticias = Noticia.objects.filter(
+            Q(titulo__icontains = busqueda) |
+            Q(subtitulo__icontains = busqueda) |
+            Q(contenido__icontains = busqueda)
+        ).distinct()
+        return render(request, "resultado-busqueda.html", {"noticias": noticias})
+    else:
+        mensaje = "No se enviaron datos"
+        return render(request, "resultado-busqueda.html", {"mensaje": mensaje})
+
+
 
 

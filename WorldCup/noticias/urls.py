@@ -1,6 +1,6 @@
 from django.urls import path
 from noticias.views import (
-    inicio, NoticiaList, NoticiaDetail, NoticiaCreate, NoticiaUpdate, NoticiaDelete
+    inicio, NoticiaList, NoticiaDetail, NoticiaCreate, NoticiaUpdate, NoticiaDelete, buscar_noticia
 )
 
 urlpatterns = [
@@ -10,4 +10,5 @@ urlpatterns = [
     path('cargar-noticia/', NoticiaCreate.as_view(), name="CargarNoticia"),
     path('editar-noticia/<int:pk>', NoticiaUpdate.as_view(), name="EditarNoticia"),
     path('eliminar-noticia/<int:pk>', NoticiaDelete.as_view(), name="EliminarNoticia"),
+    path('buscar-noticia/', buscar_noticia, name="BuscarNoticias"),
 ]
