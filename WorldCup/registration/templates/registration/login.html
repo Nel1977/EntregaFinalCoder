@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Inicio{% endblock title %}
+
+{% block contenido %}
+
+{% if request.user.is_authenticated %}
+    <script>window.location.href = '/accounts/profile/'; </script>
+{% endif %}
+<style>.errorlist{color:red;}</style>
+
+<section class="py-5">
+    <div class="container px-5">
+        <!-- Contact form-->
+        <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+            <div class="text-center mb-5">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-person-fill"></i></div>
+                <h1 class="fw-bolder">Iniciar Sesión</h1>
+                <p class="lead fw-normal text-muted mb-0">¡Ingresa y accede las últimas noticias de Qatar 2022!</p>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6">
+                    {% if 'register' in request.GET %}
+                      <p style="color:green;">Usuario registrado correctamente, ya puedes iniciar sesión.</p>
+                    {% endif %}
+                    <form action="" method="post">{% csrf_token %}
+                        {% if form.non_field_errors %}
+                            <p style="color:red">Usuario o contraseña incorrectos, intenta de nuevo.</p>
+                        {% endif %}
+                        <!-- Name input-->
+                        <div class="form-floating mb-3">
+                            <input type="text" name="username" autofocus maxlength="254" required id="id_username" class="form-control" placeholder="Usuario"/>
+                            <label for="name">Usuario</label>
+                        </div>
+                        <!-- Email address input-->
+                        <div class="form-floating mb-3">
+                            <input type="password" name="password" required id="id_password" class="form-control" placeholder="Contraseña"/>
+                            <label for="name">Contraseña</label>
+                        </div>
+                        <!-- Phone number input-->
+                        <div class="form-floating mb-3">
+                            <input type="submit" class="btn btn-primary btn-block" value="Acceder"/>
+                        </div>
+                    </form>
+                    <p>
+                      ¿Ha olvidado su clave? Puede restaurarla <a href="{% url 'password_reset' %}">aquí</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock contenido %}

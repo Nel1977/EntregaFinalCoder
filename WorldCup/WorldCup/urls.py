@@ -24,4 +24,6 @@ urlpatterns = [
     path('', include('noticias.urls')),
     # Paths del admin
     path('admin/', admin.site.urls),
+    # Paths de autenticación
+    path('accounts/', include('django.contrib.auth.urls')), # urls de django
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

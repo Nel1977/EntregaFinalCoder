@@ -49,7 +49,7 @@ def buscar_noticia(request):
         ).distinct()
         return render(request, "resultado-busqueda.html", {"noticias": noticias})
     else:
-        mensaje = "No se enviaron datos"
+        mensaje = "No se enviaron datos."
         return render(request, "resultado-busqueda.html", {"mensaje": mensaje})
 
 
