@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Registro{% endblock title %}
+
+{% block contenido %}
+
+<style>.errorlist{color:red;}</style>
+
+<section class="py-5">
+    <div class="container px-5">
+        <!-- Contact form-->
+        <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+            <div class="text-center mb-5">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-person-fill"></i></div>
+                <h1 class="fw-bolder">Registro</h1>
+                <p class="lead fw-normal text-muted mb-0">¡Regístrate y accede a las noticias de Qatar 2022!</p>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6">
+                    <form action="" method="post">{% csrf_token %}
+                        {{form.as_p}}
+                        <div class="form-floating mb-3">
+                            <input type="submit" class="btn btn-primary btn-block" value="Registrarse"/>
+                        </div>
+                    </form>
+                    <p>
+                      ¿Ya tienes una cuenta? Inicia sesión <a href="{% url 'login' %}">aquí</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock contenido %}
