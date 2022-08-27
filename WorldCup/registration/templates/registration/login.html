@@ -30,22 +30,14 @@
                             <p style="color:red">Usuario o contraseña incorrectos, intenta de nuevo.</p>
                         {% endif %}
                         <!-- Usuario input-->
-                        <div class="form-floating mb-3">
-                            <input type="text" name="username" autofocus maxlength="254" required id="id_username" class="form-control" placeholder="Usuario"/>
-                            <label for="name">Usuario</label>
-                        </div>
+                        <input type="text" name="username" autofocus maxlength="254" required id="id_username" class="form-control mb-3" placeholder="Usuario"/>
                         <!-- Contraseña input-->
-                        <div class="form-floating mb-3">
-                            <input type="password" name="password" required id="id_password" class="form-control" placeholder="Contraseña"/>
-                            <label for="name">Contraseña</label>
-                        </div>
+                        <input type="password" name="password" required id="id_password" class="form-control mb-3" placeholder="Contraseña"/>
                         <!-- Submit input-->
-                        <div class="form-floating mb-3">
-                            <input type="submit" class="btn btn-primary btn-block" value="Acceder"/>
-                        </div>
+                        <input type="submit" class="btn btn-primary btn-block mb-4" value="Acceder"/>
                     </form>
                     <p>
-                      ¿Ha olvidado su clave? Puede restaurarla <a href="{% url 'password_reset' %}">aquí</a>.
+                      ¿Todavía no tienes una cuenta? Puedes registrarte <a href="{% url 'signup' %}">aquí</a>.
                     </p>
                 </div>
             </div>
