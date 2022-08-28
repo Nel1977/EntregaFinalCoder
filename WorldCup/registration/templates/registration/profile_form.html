@@ -24,17 +24,21 @@
                     </div>
                     <!-- Formulario -->
                     <div class="col-md-8">
-                        <h3>Perfil</h3>
+                        <h3>Perfil de {{ user.username }}</h3>
                         <div class="mb-3">
+                            <label for="avatar">Cambiar imagen</label><br>
                             <input type="file" name="avatar" class="form-control-file mt-3" id="id_avatar">
                         </div>
                         <div class="mb-3">
+                            <label for="nombre">Nombre</label><br>
                             {{ form.nombre }}
                         </div>
                         <div class="mb-3">
+                            <label for="apellido">Apellido</label><br>
                             {{ form.apellido }}
                         </div>
                         <div class="mb-3">
+                            <label for="email">Email</label><br>
                             {{ form.email }}
                         </div>
                         <input type="submit" class="btn btn-primary btn-block mt-3" value="Actualizar">

@@ -53,6 +53,11 @@
                         {% else %}
                             <div class="btn-group">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                {% if request.user.profile.avatar %}
+                                    <img src="{{request.user.profile.avatar.url}}" class="img-fluid rounded-circle" width="25px" height="25px">&nbsp;
+                                {% else %}
+                                    <img src="{% static 'registration/img/no-avatar.jpg' %}" class="img-fluid rounded-circle" width="25px" height="25px">&nbsp;
+                                {% endif %}
                                 {{user.username}}
                                 </button>
                                 <ul class="dropdown-menu">
