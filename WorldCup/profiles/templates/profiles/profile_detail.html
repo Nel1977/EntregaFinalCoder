@@ -30,7 +30,9 @@
                     {% if profile.email %}
                         <p class="lead fw-normal text-muted mb-4">{{profile.email}}</p>
                     {% endif %}
-                    <a class="btn btn-primary btn-lg" href="#scroll-target"><i class="bi bi-chat-left-text"></i>&nbsp;Enviar Mensaje</a>
+                    {% if request.user != profile.user %}
+                        <a class="btn btn-primary btn-lg" href="{% url 'start' profile.user.username %}"><i class="bi bi-chat-left-text"></i>&nbsp;Enviar Mensaje</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
