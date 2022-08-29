@@ -27,4 +27,6 @@ urlpatterns = [
     # Paths de autenticación
     path('accounts/', include('django.contrib.auth.urls')), # urls de django
     path('accounts/', include('registration.urls')),
+    # Phats de messenger
+    path('messenger/', include('messenger.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

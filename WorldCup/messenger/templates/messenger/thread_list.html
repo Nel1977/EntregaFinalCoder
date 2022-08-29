@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Messenger{% endblock title %}
+
+{% block contenido %}
+
+{% include 'includes/menu-admin.html' %}
+
+<style>
+    .avatar  { width:50px; height:50px; float:left; margin-right:10px; }
+</style>
+<main role="main">
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-md-9 mx-auto mb-5">
+                <div class="row">
+                    <!-- Hilos de conversación -->
+                    <div class="col-md-4">
+                        <!-- Recorremos los hilos y sólo mostramos los que tienen como mínimo 1 mensaje -->
+                        {% for thread in request.user.threads.all %}
+                            {% if thread.messages.all|length > 0 %}
+                                <div class="mb-3">
+                                    <!-- Recorremos los usuarios del hilo menos el propio request.user -->
+                                    {% for user in thread.users.all %}
+                                        {% if user != request.user %}   
+                                            <!-- Mostramos el avatar del usuario -->  
+                                            {% if user.profile.avatar %}
+                                                <img src="{{user.profile.avatar.url}}" class="avatar">
+                                            {% else %}
+                                                <img src="{% static 'registration/img/no-avatar.jpg' %}" class="avatar">
+                                            {% endif %}
+                                            <!-- Mostramos la información del usuario -->
+                                            <div>
+                                                <a href="{% url 'detail' thread.pk %}">{{user}}</a><br>
+                                                <small><i>Hace {{thread.messages.last.created|timesince}}</i></small>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <!-- Hilos de conversación -->
+                    <div class="col-md-8">
+                        <p><i>Selecciona una conversación de tu panel izquierdo.</i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock contenido %}
