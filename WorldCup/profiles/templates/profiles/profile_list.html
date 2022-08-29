@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Perfiles{% endblock title %}
+
+{% block contenido %}
+
+{% include 'includes/menu-admin.html' %}
+
+<header class="py-5">
+    <div class="container px-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xxl-6">
+                <div class="text-center my-5">
+                    <h2 class="fw-bolder mb-3">Futboler@s!</h2>
+                    <p class="lead fw-normal text-muted mb-4">Un espacio para comunicarnos y seguir hablando de lo que siempre hablamos... de fútbol!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="py-5">
+    <div class="container px-5">
+        <!-- Contact cards-->
+        <div class="row gx-5 row-cols-2 row-cols-lg-4 py-5">
+            {% for profile in profile_list %}
+                <div class="col text-center">
+                    {% if profile.avatar %}
+                        <img class="img-fluid rounded-circle mb-4 px-4" src="{{profile.avatar.url}}" alt="" width="150px" height="150px" />
+                    {% else %}
+                        <img class="img-fluid rounded-circle mb-4 px-4" src="{% static 'registration/img/no-avatar.jpg' %}" alt="" width="150px" height="150px" />
+                    {% endif %}
+                    <div class="h5 mb-2">{{profile.user}}</div>
+                    <a class="btn btn-primary btn-sm" href="{% url 'ProfileDetail' profile.user %}">Ver perfil</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock contenido %}

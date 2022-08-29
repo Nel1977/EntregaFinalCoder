@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}{{profile.user}}{% endblock title %}
+
+{% block contenido %}
+
+{% include 'includes/menu-admin.html' %}
+
+<header class="py-5">
+    <div class="container px-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xxl-6">
+                <div class="text-center my-5">
+                    <h1 class="fw-bolder mb-3">{{profile.user}}</h1>
+                    {% if profile.avatar %}
+                        <img class="img-fluid rounded-circle mb-4 px-4" src="{{profile.avatar.url}}" alt="" width="150px" height="150px" />
+                    {% else %}
+                        <img class="img-fluid rounded-circle mb-4 px-4" src="{% static 'registration/img/no-avatar.jpg' %}" alt="" width="150px" height="150px" />
+                    {% endif %}
+                    <p class="lead fw-normal text-muted mb-4">
+                        {% if profile.nombre %}
+                            {{profile.nombre}}&nbsp;
+                        {% endif %}
+                        {% if profile.apellido %}
+                            {{profile.apellido}}
+                        {% endif %}
+                    </p>
+                    {% if profile.email %}
+                        <p class="lead fw-normal text-muted mb-4">{{profile.email}}</p>
+                    {% endif %}
+                    <a class="btn btn-primary btn-lg" href="#scroll-target"><i class="bi bi-chat-left-text"></i>&nbsp;Enviar Mensaje</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+{% endblock contenido %}
