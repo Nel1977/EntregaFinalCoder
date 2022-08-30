@@ -16,9 +16,6 @@
                     <li><a class="dropdown-item" href="{% url 'ListaNoticias' %}">Ver Noticias</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
-                </li>
             </ul>
             <form class="d-flex" action="{% url 'BuscarNoticias' %}" method="GET">{% csrf_token %}
                 <input class="form-control me-2" type="text" placeholder="Buscar en Noticias" name="buscar">

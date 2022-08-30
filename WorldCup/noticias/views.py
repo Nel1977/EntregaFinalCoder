@@ -11,6 +11,9 @@ from noticias.models import Noticia
 def inicio(self):
     return render(self, "inicio.html")
 
+def sobre_mi(self):
+    return render(self, "sobre-mi.html")
+
 class NoticiaList(ListView):
     model = Noticia
     template_name = 'noticias.html'

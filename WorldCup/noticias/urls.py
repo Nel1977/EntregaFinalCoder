@@ -1,10 +1,11 @@
 from django.urls import path
 from noticias.views import (
-    inicio, NoticiaList, NoticiaDetail, NoticiaCreate, NoticiaUpdate, NoticiaDelete, buscar_noticia
+    inicio, sobre_mi, NoticiaList, NoticiaDetail, NoticiaCreate, NoticiaUpdate, NoticiaDelete, buscar_noticia
 )
 
 urlpatterns = [
     path('', inicio, name="Inicio"),
+    path('sobre-mi/', sobre_mi, name="SobreMi"),
     path('lista-noticias/', NoticiaList.as_view(), name="ListaNoticias"),
     path('noticia/<int:pk>', NoticiaDetail.as_view(), name="Noticia"),
     path('cargar-noticia/', NoticiaCreate.as_view(), name="CargarNoticia"),
