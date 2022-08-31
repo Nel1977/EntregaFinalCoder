@@ -1,0 +1,12 @@
+CASOS DE PRUEBA
+
+1- Ingreso mal los datos en los formularios para tratar que falle alguno.
+LOS FORMULARIOS ESTÁN VALIDANDO CORRECTAMENTE LOS DATOS, NO SE REGISTRAN ERRORES.
+
+2- Ingreso manualmente las urls de publicar, editar y eliminar noticias sin estar logeado como administardor.
+NO PUEDO ACCEDER, ME REDIRIGE AL LOGIN, O SEA QUE FUNCIONA CORRECTAMENTE.
+
+3- Ingreso manualmente las urls de los hilos de conversación de los mensajes sin estar en la conversación.
+NO PUEDO ACCEDER ME REDIRIGE AL LOGIN, POR LO QUE NO PUEDO VER CONVERSACIONES AJENAS. FUNCIONA OK.
+
+
